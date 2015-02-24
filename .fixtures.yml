@@ -1,0 +1,7 @@
+fixtures:
+  forge_modules:
+    staging: "nanliu/staging"
+    stdlib: "puppetlabs/stdlib"
+    augeasproviders_apache: "herculesteam/augeasproviders_apache"
+  symlinks:
+    shibboleth: "#{source_dir}"

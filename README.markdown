@@ -1,0 +1,3 @@
+# shibboleth #
+
+This is the shibboleth module. It provides...

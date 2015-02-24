@@ -1,0 +1,24 @@
+<% if @osfamily == "RedHat" -%>
+LoadModule proxy_module modules/mod_proxy.so
+LoadModule proxy_ajp_module modules/mod_proxy_ajp.so
+<% elsif @osfamily == "Debian" -%>
+LoadModule proxy_module /usr/lib/apache2/modules/mod_proxy.so
+LoadModule proxy_ajp_module /usr/lib/apache2/modules/mod_proxy_ajp.so
+<% end -%>
+
+#
+# When loaded, the mod_proxy_ajp module adds support for
+# proxying to an AJP/1.3 backend server (such as Tomcat).
+# To proxy to an AJP backend, use the "ajp://" URI scheme;
+# Tomcat is configured to listen on port 8009 for AJP requests
+# by default.
+#
+
+#
+# Uncomment the following lines to serve the ROOT webapp
+# under the /tomcat/ location, and the jsp-examples webapp
+# under the /examples/ location.
+#
+#ProxyPass / ajp://localhost:8009/
+
+ProxyPass /<%= scope.lookupvar('shibboleth::session_location') %> ajp://localhost:8009/<%= scope.lookupvar('shibboleth::session_location') %> timeout=1200 KeepAlive=On
