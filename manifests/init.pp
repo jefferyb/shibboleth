@@ -58,8 +58,7 @@ class shibboleth (
   $shib_key_source           = $::shibboleth::params::shib_key_source,
   $shib_cert_source          = $::shibboleth::params::shib_cert_source,
   $create_shib_cert          = true,
-  $enable_metadata_filter    = false,
-  $consistent_address        = true) inherits shibboleth::params {
+  ) inherits shibboleth::params {
 
   include shibboleth::services
   include shibboleth::setup_apache
